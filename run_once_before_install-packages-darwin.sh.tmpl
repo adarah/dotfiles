@@ -1,0 +1,29 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+
+# chezmoi essentials
+brew "git"
+brew "gnupg"
+brew "lastpass-cli"
+
+
+# userland applications
+cask "google-chrome"
+
+EOF
+
+{{ $pgpMasterKey := index (index (lastpass "PGP master key") 0).note "" | quote -}}
+{{ $gpgOwnerTrust := index (index (lastpass "GPG owner trust") 0).note "" | quote -}}
+echo {{ $pgpMasterKey }} | gpg --batch --import
+echo -ne {{ $gpgOwnerTrust }} | gpg --batch --import-ownertrust
+
+# Sets Caps Lock to Escape
+# https://developer.apple.com/library/archive/technotes/tn2450/_index.html
+hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'
+
+{{ end -}}
+
