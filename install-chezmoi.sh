@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # -e: exit on error
 # -u: exit on unset variables
@@ -27,4 +27,4 @@ set -- init --apply --source="${script_dir}"
 
 echo "Running 'chezmoi $*'" >&2
 # exec: replace current process with chezmoi
-exec "$chezmoi" "$@"
+exec "$chezmoi" "$@" --no-tty <<< 's'  # Skips any changed files. ~/.gitconfig is often modified by the devcontainer
