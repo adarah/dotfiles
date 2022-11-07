@@ -1,0 +1,28 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+
+# chezmoi essentials
+brew "git"
+brew "gnupg"
+brew "lastpass-cli"
+
+# Menu bar stats
+cask "stats"
+
+# cli applications
+brew "neovim"
+
+# userland applications
+cask "google-chrome"
+cask "visual-studio-code"
+cask "discord"
+cask "spotify"
+cask "iterm2"
+
+EOF
+{{ end -}}
+

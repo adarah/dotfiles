@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+{{ $pgpMasterKey := index (index (lastpass "PGP master key") 0).note "" | quote -}}
+{{ $gpgOwnerTrust := index (index (lastpass "GPG owner trust") 0).note "" | quote -}}
+echo {{ $pgpMasterKey }} | gpg --batch --import
+echo -ne {{ $gpgOwnerTrust }} | gpg --batch --import-ownertrust
+
