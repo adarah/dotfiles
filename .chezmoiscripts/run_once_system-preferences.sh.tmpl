@@ -1,8 +1,13 @@
+{{- if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env zsh
 
 set -euo pipefail
 
 defaults write NSGlobalDomain AppleLocale en_BR
+defaults write NSGlobalDomain AppleLocale en_BR
+
+# I can't get accessibility settings to be changed via the cli, so just leave this commented for now...
+# sudo defaults write com.apple.universalaccess reduceMotion -bool true
 
 
 # Sets Caps Lock to Escape
@@ -23,4 +28,8 @@ defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
 ## Allow quitting
 defaults write com.apple.finder "QuitMenuItem" -bool "true"
 
-killall Finder
+if pgrep -x Finder > /dev/null; then
+	killall Finder
+fi
+
+{{ end -}}

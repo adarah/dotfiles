@@ -1,9 +1,9 @@
 [user]
-	name = Lucas Harada
-	email = lucasyharada@gmail.com
-	signingkey = BAE4F48A497952E6
+    name = Lucas Harada
+    email = lucasyharada@gmail.com
+    signingkey = BAE4F48A497952E6
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [pager]
     diff = delta
     log = delta
@@ -19,4 +19,4 @@
     file-style = bold yellow ul
     file-decoration-style = none
 [core]
-	editor = nvim
+    editor = nvim
