@@ -1,8 +1,6 @@
+
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
-
-alias vi=nvim
-alias gc=git commit -S
 
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -15,3 +13,5 @@ then
   autoload -Uz compinit
   compinit
 fi
+
+source ~/.alias.sh
