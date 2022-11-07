@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-source ./dot_alias.sh
+source "$(dirname "$0")/dot_alias.sh"
