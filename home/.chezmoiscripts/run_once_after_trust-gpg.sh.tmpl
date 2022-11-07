@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env zsh
 
 set -euo pipefail
@@ -6,4 +7,4 @@ set -euo pipefail
 {{ $gpgOwnerTrust := index (index (lastpass "GPG owner trust") 0).note "" | quote -}}
 echo {{ $pgpMasterKey }} | gpg --batch --import
 echo -ne {{ $gpgOwnerTrust }} | gpg --batch --import-ownertrust
-
+{{ end -}}
