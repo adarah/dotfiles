@@ -1,0 +1,8 @@
+edit:
+  command: nvim
+
+git:
+  autoAdd: true
+
+pinentry:
+  command: pinentry-mac
