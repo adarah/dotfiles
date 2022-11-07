@@ -19,4 +19,4 @@
     file-style = bold yellow ul
     file-decoration-style = none
 [core]
-    editor = nvim
+    editor = vi
